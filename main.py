@@ -6,9 +6,14 @@ def parse():
     return parser.parse_args().file_path
 
 def file_read(path_to_file):
-    with open(path_to_file, 'r', encoding='utf-8') as file:
-        data = file.read()
-    return data
+    try:
+        with open(path_to_file, 'r', encoding='utf-8') as file:
+            data = file.read()
+        return data
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File {path_to_file} not found.")
+    except Exception as e:
+        raise Exception(f"Error reading file {e}")
 
 def main():
     data = file_read(parse())
