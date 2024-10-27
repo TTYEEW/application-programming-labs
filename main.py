@@ -1,4 +1,6 @@
 import argparse
+import re
+from collections import Counter
 
 def parse():
     parser = argparse.ArgumentParser()
@@ -17,6 +19,14 @@ def file_read(path_to_file):
 
 def main():
     data = file_read(parse())
+    phone_pattern = re.findall(r'\b\d{3}\b', data)
+    number_of_codes = Counter(phone_pattern)
+    common_code = number_of_codes.most_common(1)
+
+    if common_code:
+        print(f"The most common code: {common_code[0][0]} is encountered {common_code[0][1]} times")
+    else:
+        print("Phone numbers not found")
 
 if __name__ == "__main__":
     main()
