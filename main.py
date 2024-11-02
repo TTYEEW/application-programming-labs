@@ -2,6 +2,7 @@ import argparse
 import re
 from collections import Counter
 
+##
 def parse():
     parser = argparse.ArgumentParser()
     parser.add_argument('file_path', type=str, help='data.txt')
