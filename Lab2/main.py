@@ -3,6 +3,7 @@ from imgdownload import download_image
 from iterator import ClassIterator
 from parser import parse
 
+##Add files via upload
 def main() -> None:
     try:
         arg = parse()
