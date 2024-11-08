@@ -1,7 +1,14 @@
 import csv
 import os
 
-def create_annatation_file(directory: str, annotation_file: str):
+def create_annatation_file(directory: str, annotation_file: str) -> None:
+    """
+    Функция для создания аннотации
+
+    :param directory: Папка с изображениями
+    :param annotation_file: Путь для создания аннотации
+
+    """
     with open(annotation_file, 'a', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(['Absolute Path', 'Relative Path'])
