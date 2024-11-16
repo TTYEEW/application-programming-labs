@@ -1,3 +1,4 @@
+import csv
 
 class ClassIterator:
     """
@@ -13,13 +14,11 @@ class ClassIterator:
         self.images = []
         self.index = 0
         with open(annotation_file, 'r', encoding='utf-8') as file:
-            next(file)
-            for line in file:
-                parts = line.strip().split(',')
-                abs_path = parts[1]
+            reader = csv.reader(file)
+            next(reader)
+            for line in reader:
+                abs_path = line[1]
                 self.images.append(abs_path)
-        #Отладка
-        print(f"Найдено {len(self.images)} изображений")
 
     def __iter__(self) -> 'ClassIterator':
         return self
@@ -28,10 +27,10 @@ class ClassIterator:
         """
         Возвращает следующий уникальный путь к файлу изображения.
 
-        :return str: Путь к следующему файлу изображения.
+        :return image_path: Путь к следующему файлу изображения.
 
         """
-        while self.index < len(self.images):
+        if self.index < len(self.images):
             image_path = self.images[self.index]
             self.index += 1
             return image_path

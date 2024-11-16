@@ -1,6 +1,6 @@
 import argparse
 
-def parse() -> tuple[str, str, int, str]:
+def parse() -> argparse.Namespace:
     """
     Парсинг аргументов командной строки
 
