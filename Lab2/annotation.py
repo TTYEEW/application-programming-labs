@@ -16,5 +16,5 @@ def create_annatation_file(directory: str, annotation_file: str) -> None:
             for image in images:
                 if image.lower().endswith(('.png', '.jpg', '.jpeg')):
                     absolute_path = os.path.abspath(os.path.join(root, image))
-                    relative_path = os.path.relpath(absolute_path, directory)
+                    relative_path = os.path.join(root, image)
                     writer.writerow([absolute_path, relative_path])
