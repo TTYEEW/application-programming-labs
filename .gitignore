@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+input_image.png
+overlay_image.png
+
 # C extensions
 *.so
 
