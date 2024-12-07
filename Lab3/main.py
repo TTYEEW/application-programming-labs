@@ -4,6 +4,7 @@ from image_utility import (
     blend_images, compare_images, save_image
 )
 
+##
 def main():
     args = parse()
 
