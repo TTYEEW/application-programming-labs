@@ -1,7 +1,7 @@
 from parser import parse
 from image_utility import (
     read_image, image_size, plot_histogram, resize_image,
-    blend_images, compare_images, save_image
+    mixing_images, compare_images, save_image
 )
 
 ##
@@ -18,7 +18,7 @@ def main():
 
     overlay_resized = resize_image(overlay_image, image.shape[1], image.shape[0])
 
-    blended_image = blend_images(image, overlay_resized, args.transparency)
+    blended_image = mixing_images(image, overlay_resized, args.transparency)
 
     compare_images(image, blended_image, "compare.png")
 
