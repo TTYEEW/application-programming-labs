@@ -1,5 +1,6 @@
 import cv2
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def load_annotation(annotation_file: str) -> pd.DataFrame:
     """
@@ -13,6 +14,8 @@ def load_annotation(annotation_file: str) -> pd.DataFrame:
 def add_rows_for_image(df: pd.DataFrame) -> None:
     """
     Добавляет столбцы высоты, ширины, глубины и площади изображений
+
+    :param df: Данные из файла аннотации
     
     """
     heights, widths, depths, areas = [], [], [], []
@@ -31,3 +34,35 @@ def add_rows_for_image(df: pd.DataFrame) -> None:
     df["width"] = widths
     df["depth"] = depths
     df["area"] = areas
+
+def filter_images(df: pd.DataFrame, max_height: int, max_width: int) -> pd.DataFrame:
+    """
+    Фильтрует DataFrame по заданным размерам изображений
+
+    :param df: данные из аннотации уже с height, width, depth, area
+    :param max_height: максимальная высота
+    :param max_width: максимальная высота
+
+    """
+    return df[(df["height"] <= max_height) & (df["width"] <= max_width)]
+
+def sort_by_area(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Сортирует DataFrame по площади изображений (от min к max)
+
+    :param df: Данные
+    
+    """
+    return df.sort_values(by="area")
+
+def plot_area_histogram(df: pd.DataFrame) -> None:
+    """
+    Строит гистограмму распределения площадей изображений
+    
+    """
+    plt.hist(df["area"].dropna(), bins=20, edgecolor="black", color="skyblue")
+    plt.title("Распределение площадей изображений")
+    plt.xlabel("Площадь (пиксели)")
+    plt.ylabel("Частота")
+    plt.grid(axis="y", linestyle="--", alpha=0.7)
+    plt.show()
