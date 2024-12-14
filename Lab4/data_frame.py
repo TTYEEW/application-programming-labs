@@ -1,6 +1,6 @@
 import cv2
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
 def load_annotation(annotation_file: str) -> pd.DataFrame:
     """
@@ -66,3 +66,7 @@ def plot_area_histogram(df: pd.DataFrame) -> None:
     plt.ylabel("Частота")
     plt.grid(axis="y", linestyle="--", alpha=0.7)
     plt.show()
+
+def decsriber(df: pd.DataFrame):
+
+    print(f"Add describer\n{df[["height","width","depth"]].describe()}")
