@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+/images
+annotaion.csv
 # C extensions
 *.so
 
