@@ -3,11 +3,8 @@ import os
 from iterator import ClassIterator
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import (
-    QMainWindow, QVBoxLayout, QLabel, QPushButton, QFileDialog, QWidget, QMessageBox
-)
-
-
+from PyQt5.QtWidgets import (QMainWindow, QVBoxLayout, QLabel, 
+                             QPushButton, QFileDialog, QWidget, QMessageBox)
 
 class MainWindow(QMainWindow):
     """
