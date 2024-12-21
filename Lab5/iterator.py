@@ -10,7 +10,7 @@ class ClassIterator:
         self.images = []
         self.index = 0
         if not os.path.exists(annotation_file):
-            raise FileNotFoundError("Файл аннотации не найден.")
+            raise FileNotFoundError("Annotation file not found.")
         with open(annotation_file, 'r', encoding='utf-8') as file:
             reader = csv.reader(file)
             next(reader)
