@@ -15,7 +15,7 @@ class MainWindow(QMainWindow):
         
         super().__init__()
         self.setWindowTitle("Dataset Viewer")
-        self.setGeometry(200, 200, 900, 700)
+        self.setGeometry(200, 200, 700, 700)
 
         self.image_label = QLabel(self)
         self.image_label.setAlignment(Qt.AlignCenter)
@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
                 self.iterator = ClassIterator(file)
                 self.show_next_image()
             except Exception as e:
-                QMessageBox.critical(self, "Error", f"Error: {str(e)}")
+                QMessageBox.critical(self, "Error", f"Annotation is empty {str(e)}")
 
     def show_next_image(self) -> None:
         if self.iterator is None:
@@ -60,6 +60,6 @@ class MainWindow(QMainWindow):
             else:
                 QMessageBox.critical(self, "Error", f"Image {image_path} not found.")
         except StopIteration:
-            QMessageBox.information(self, "Error", "This is end of list")
+            QMessageBox.information(self, "Info", "This is end of list")
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Error: {str(e)}")
